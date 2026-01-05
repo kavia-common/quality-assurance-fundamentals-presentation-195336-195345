@@ -1,10 +1,9 @@
 ---
-# Global deck settings
 theme: default
-title: Your Presentation Title
+title: "Quality Mindset – Foundations of QA"
 info: |
-  Professional presentation template with dark theme
-  20 slides with modern components
+  1-hour foundational training for mixed roles (Developers, QA, Scrum Masters, Interns, Leads)
+  Visual-first slides with speaker notes
 class: text-left
 mdc: true
 transition: slide-left
@@ -15,560 +14,713 @@ css: |
   @import "./style.css";
 ---
 
-# PROJECT TITLE
-<div class="title-slide with-hero-glow">
-  <div class="hero-copy">
-    <h2 class="text-hero">Transform Your Business with Innovation</h2>
-    <p class="subtitle text-md">A comprehensive solution for modern enterprises</p>
-    <div class="subtitle text-xs">Presenter Name • Date • contact@example.com</div>
-    <div class="hero-ctas mt-2">
-      <button class="btn-primary">Get Started</button>
-      <button class="btn-secondary">Learn More</button>
-    </div>
+# Quality Mindset<br/>Foundations of QA
+<div class="subtitle-row">
+  <div class="pill">Shared language • Shared ownership • Better outcomes</div>
+  <div class="subtle">Audience: Developers • QA Engineers • Scrum Masters • Interns • Leads</div>
+</div>
+
+<div class="hero-tiles">
+  <div class="tile">
+    <div class="tile-icon">🎯</div>
+    <div class="tile-title">Goal</div>
+    <div class="tile-text">Build a shared understanding of quality and how we deliver it together.</div>
+  </div>
+  <div class="tile">
+    <div class="tile-icon">🧠</div>
+    <div class="tile-title">Mindset</div>
+    <div class="tile-text">Prevent defects early, learn fast, reduce risk.</div>
+  </div>
+  <div class="tile">
+    <div class="tile-icon">🤝</div>
+    <div class="tile-title">Team</div>
+    <div class="tile-text">Quality is not a phase. It is how we work.</div>
   </div>
 </div>
+
+<div class="footer-note subtle">Deck exports to PPTX via <code>pnpm export</code> (see README updates).</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–00:30 Welcome and context.
+- This session is about establishing a shared “quality mindset,” not teaching a specific tool.
+- Mixed audience: devs, QA, Scrum Masters, interns, leads. Everyone has a role in quality.
+
+00:30–02:00 Set expectations.
+- We will cover what quality means, the difference between QA/QC/testing, where QA fits in SDLC and Scrum.
+- We will also touch on how AI systems change the risk profile and what that means for QA thinking.
+
+02:00–04:30 How to participate.
+- Ask questions and share examples from your product area.
+- When you hear something that feels “obvious,” treat it as a chance to align vocabulary and behaviors across roles.
+
+04:30–05:00 Transition.
+- Let’s start with why quality matters economically and socially.
+-->
 
 ---
 
-# The Challenge
-
-<div class="problem-grid">
-  <div class="problem-card">
-    <div class="eyebrow">Current State</div>
-    <h3 class="feature-title">Market Inefficiencies</h3>
-    <ul class="points-clean">
-      <li>Complex processes and workflows</li>
-      <li>Disconnected systems and data silos</li>
-      <li>High operational costs</li>
-    </ul>
+# Why Quality Matters
+<div class="two-col">
+  <div class="card">
+    <div class="eyebrow">Impact chain</div>
+    <div class="chain">
+      <div class="chain-node bad">Broken feature</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node warn">Unhappy user</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node bad">Lost trust</div>
+      <div class="chain-arrow">→</div>
+      <div class="chain-node bad">Churn / revenue loss</div>
+    </div>
+    <div class="subtle mt-2">Quality failures are rarely “just bugs” — they are business outcomes.</div>
   </div>
 
-  <div class="problem-card">
-    <div class="eyebrow">Industry Trends</div>
-    <h3 class="feature-title">Rapid Digital Evolution</h3>
-    <ul class="points-clean">
-      <li>Accelerating technology adoption</li>
-      <li>Changing customer expectations</li>
-      <li>New competitive pressures</li>
-    </ul>
-  </div>
-
-  <div class="problem-card">
-    <div class="eyebrow">Gap Analysis</div>
-    <h3 class="feature-title">Missing Capabilities</h3>
-    <ul class="points-clean">
-      <li>Limited automation tools</li>
-      <li>Insufficient analytics</li>
-      <li>Poor integration options</li>
-      <li>Lack of scalability</li>
-    </ul>
+  <div class="card">
+    <div class="eyebrow">Cost of defects</div>
+    <div class="curve">
+      <div class="curve-axis">
+        <div class="axis-label">Earlier</div>
+        <div class="axis-line"></div>
+        <div class="axis-label">Later</div>
+      </div>
+      <div class="curve-body">
+        <div class="dot d1">Req</div>
+        <div class="dot d2">Design</div>
+        <div class="dot d3">Dev</div>
+        <div class="dot d4">Test</div>
+        <div class="dot d5">Prod</div>
+        <svg class="curve-svg" viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M30,190 C120,185 180,170 240,150 C310,125 360,105 410,80 C470,40 520,20 570,10"
+                fill="none" stroke="rgba(59,130,246,0.95)" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="subtle mt-2">Fixing a defect in production is typically far more expensive than preventing it upstream.</div>
+    </div>
   </div>
 </div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:30 Story + framing.
+- Quality is how users experience our product. When it breaks, users pay first—then we pay.
+- Share a quick example: an outage, a broken payment flow, a data leak, or even a confusing UI.
+
+01:30–03:00 The “impact chain.”
+- A defect is rarely isolated: it becomes support tickets, refunds, escalations, negative reviews, and distraction from roadmap.
+- Trust is cumulative and fragile: it takes time to build and seconds to lose.
+
+03:00–04:30 Cost of defects curve (left-to-right).
+- Earlier phases are cheaper because context is fresh and changes are small.
+- Late defects often include hidden work: coordination, hotfixes, rollback risk, customer comms, compliance reporting.
+
+04:30–05:00 Transition.
+- If quality is so important, what do we actually mean by “quality”?
+-->
 
 ---
 
-# Our Solution
-
-A comprehensive platform that addresses key business challenges
-
-<div class="stats-band mt-2">
-  <div class="stat-card">
-    <div class="stat-number">10x</div>
-    <div class="stat-label">Faster Processing</div>
+# What Does Quality Mean?
+<div class="pillars">
+  <div class="pillar">
+    <div class="icon">✅</div>
+    <div class="title">Correctness</div>
+    <div class="text subtle">Does it do the right thing?</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-number">50%</div>
-    <div class="stat-label">Cost Reduction</div>
+  <div class="pillar">
+    <div class="icon">🧭</div>
+    <div class="title">Usability</div>
+    <div class="text subtle">Can users succeed easily?</div>
   </div>
-  <div class="stat-card">
-    <div class="stat-number">99.9%</div>
-    <div class="stat-label">Uptime</div>
+  <div class="pillar">
+    <div class="icon">🛡️</div>
+    <div class="title">Reliability</div>
+    <div class="text subtle">Does it work consistently?</div>
   </div>
-</div>
-
-<div class="card-grid three mt-2">
-  <div class="feature-card">
-    <div class="eyebrow">Core</div>
-    <h3 class="feature-title">Intelligent Automation</h3>
-    <p class="muted">Streamline workflows with AI-powered processes</p>
+  <div class="pillar">
+    <div class="icon">🔒</div>
+    <div class="title">Security</div>
+    <div class="text subtle">Is it safe from misuse?</div>
   </div>
-
-  <div class="feature-card">
-    <div class="eyebrow">Integration</div>
-    <h3 class="feature-title">Seamless Connectivity</h3>
-    <p class="muted">Connect all your tools and systems effortlessly</p>
+  <div class="pillar">
+    <div class="icon">⚡</div>
+    <div class="title">Performance</div>
+    <div class="text subtle">Is it fast enough?</div>
   </div>
-
-  <div class="feature-card">
-    <div class="eyebrow">Analytics</div>
-    <h3 class="feature-title">Real-time Insights</h3>
-    <p class="muted">Make data-driven decisions with powerful analytics</p>
-  </div>
-</div>
-
----
-
-# Key Features
-
-<div class="split-cols mt-2">
-  <div class="left">
-    <div class="feature-card">
-      <h3 class="feature-title">Smart Dashboard</h3>
-      <p class="muted">Centralized control and monitoring</p>
-    </div>
-    <div class="feature-card">
-      <h3 class="feature-title">Advanced Analytics</h3>
-      <p class="muted">Deep insights and predictive modeling</p>
-    </div>
-    <div class="feature-card">
-      <h3 class="feature-title">Workflow Automation</h3>
-      <p class="muted">Streamline repetitive tasks</p>
-    </div>
-  </div>
-  <div class="right">
-    <div class="glass-frame tall">
-      <div class="placeholder">Product Screenshot / Dashboard UI</div>
-    </div>
-  </div>
-</div>
-
----
-
-# Architecture Overview
-
-```mermaid
-%%{init: {
-  "theme": "dark",
-  "themeVariables": {
-    "primaryTextColor": "#E6EDF3",
-    "primaryColor": "#0B1220",
-    "lineColor": "#6E7681"
-  }
-}}%%
-
-flowchart TD
-    UI[🖥️ User Interface] --> API[⚙️ API Gateway]
-    API --> Auth[🔐 Authentication]
-    API --> Core[💼 Core Services]
-    Core --> DB[(📊 Database)]
-    Core --> Cache[(⚡ Cache)]
-    Core --> Queue[📬 Message Queue]
-    Queue --> Workers[🤖 Background Workers]
-    
-    style UI fill:#1C1A2B,stroke:#6B7FEB
-    style API fill:#1C1A2B,stroke:#6B7FEB
-    style Core fill:#1C1A2B,stroke:#6B7FEB
-    style DB fill:#2B2931,stroke:#40D79E
-    style Cache fill:#2B2931,stroke:#FFC75A
-```
-
----
-
-# Use Cases
-
-<div class="card-grid three mt-2">
-  <div class="feature-card"><h3 class="feature-title">Enterprise Resource Planning</h3><p class="muted">Unified business management</p></div>
-  <div class="feature-card"><h3 class="feature-title">Customer Relationship Management</h3><p class="muted">360-degree customer view</p></div>
-  <div class="feature-card"><h3 class="feature-title">Supply Chain Optimization</h3><p class="muted">End-to-end visibility</p></div>
-  <div class="feature-card"><h3 class="feature-title">Financial Analytics</h3><p class="muted">Real-time financial insights</p></div>
-  <div class="feature-card"><h3 class="feature-title">HR Management</h3><p class="muted">Streamlined HR processes</p></div>
-  <div class="feature-card"><h3 class="feature-title">Project Management</h3><p class="muted">Collaborative project tracking</p></div>
-</div>
-
----
-
-# Market Opportunity
-
-<div class="split-cols mt-2">
-  <div class="left">
-    <div class="feature-card">
-      <div class="eyebrow">TAM</div>
-      <h3 class="feature-title">Total Addressable Market</h3>
-      <p class="muted">$100B+ globally</p>
-    </div>
-    <div class="feature-card">
-      <div class="eyebrow">Growth</div>
-      <h3 class="feature-title">Market Expansion</h3>
-      <p class="muted">25% CAGR expected</p>
-    </div>
-    <div class="feature-card">
-      <div class="eyebrow">Segments</div>
-      <ul class="points-clean">
-        <li>Enterprise (500+ employees)</li>
-        <li>Mid-market (50-500)</li>
-        <li>SMB (under 50)</li>
-      </ul>
-    </div>
-  </div>
-  <div class="right">
-    <div class="glass-frame">
-      <div class="placeholder">Market Size Chart</div>
-    </div>
-  </div>
-</div>
-
----
-
-# Competitive Landscape
-
-<div class="glass-frame wide mt-2">
-  <div class="placeholder">Competitive Positioning Matrix</div>
-</div>
-
-<div class="card-grid three mt-2">
-  <div class="feature-card">
-    <h3 class="feature-title">Our Advantages</h3>
-    <ul class="points-clean">
-      <li>Superior technology</li>
-      <li>Better user experience</li>
-      <li>Competitive pricing</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <h3 class="feature-title">Market Position</h3>
-    <ul class="points-clean">
-      <li>Leader in innovation</li>
-      <li>Strong brand recognition</li>
-      <li>Growing market share</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <h3 class="feature-title">Differentiators</h3>
-    <ul class="points-clean">
-      <li>AI-powered features</li>
-      <li>Seamless integrations</li>
-      <li>Enterprise-grade security</li>
-    </ul>
-  </div>
-</div>
-
----
-
-# Implementation Timeline
-
-<div class="timeline mt-2">
-  <div class="time-node">
-    <div class="time-dot"></div>
-    <div class="time-card">
-      <div class="eyebrow">Phase 1: Q1 2025</div>
-      <h4>Foundation</h4>
-      <ul class="points-clean">
-        <li>System architecture design</li>
-        <li>Core infrastructure setup</li>
-        <li>Initial team formation</li>
-      </ul>
-    </div>
-  </div>
-  <div class="time-node">
-    <div class="time-dot"></div>
-    <div class="time-card">
-      <div class="eyebrow">Phase 2: Q2 2025</div>
-      <h4>Development</h4>
-      <ul class="points-clean">
-        <li>MVP development</li>
-        <li>Beta testing program</li>
-        <li>Initial customer feedback</li>
-      </ul>
-    </div>
-  </div>
-  <div class="time-node">
-    <div class="time-dot future"></div>
-    <div class="time-card">
-      <div class="eyebrow">Phase 3: Q3 2025</div>
-      <h4>Launch</h4>
-      <ul class="points-clean">
-        <li>Public release</li>
-        <li>Marketing campaign</li>
-        <li>Customer onboarding</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
----
-
-# Success Metrics
-
-<div class="stats-grid mt-2">
-  <div class="stat-card">
-    <div class="stat-number">1M+</div>
-    <div class="stat-label">Active Users</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">$50M</div>
-    <div class="stat-label">ARR</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">95%</div>
-    <div class="stat-label">Retention Rate</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">150</div>
-    <div class="stat-label">Enterprise Clients</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">4.8</div>
-    <div class="stat-label">Customer Rating</div>
-  </div>
-  <div class="stat-card">
-    <div class="stat-number">24/7</div>
-    <div class="stat-label">Support</div>
-  </div>
-</div>
-
----
-
-# Case Study
-
-<div class="split-cols mt-2">
-  <div class="left">
-    <div class="feature-card">
-      <div class="eyebrow">Client</div>
-      <h3 class="feature-title">Fortune 500 Company</h3>
-      <ul class="points-clean">
-        <li>10,000+ employees</li>
-        <li>Global operations</li>
-        <li>Complex IT infrastructure</li>
-      </ul>
-    </div>
-    <div class="feature-card">
-      <div class="eyebrow">Challenge</div>
-      <ul class="points-clean">
-        <li>Fragmented systems</li>
-        <li>Manual processes</li>
-        <li>Limited visibility</li>
-      </ul>
-    </div>
-  </div>
-  <div class="right">
-    <div class="feature-card glass">
-      <div class="eyebrow">Results</div>
-      <h3 class="feature-title">Transformation Achieved</h3>
-      <ul class="points-clean">
-        <li>60% efficiency improvement</li>
-        <li>$5M annual savings</li>
-        <li>Real-time insights</li>
-      </ul>
-    </div>
-    <div class="glass-frame short">
-      <div class="placeholder">ROI Chart</div>
-    </div>
-  </div>
-</div>
-
----
-
-# Pricing & Plans
-
-<div class="card-grid three mt-2">
-  <div class="feature-card">
-    <div class="eyebrow">Starter</div>
-    <h3 class="feature-title">$99/month</h3>
-    <ul class="points-clean">
-      <li>Up to 10 users</li>
-      <li>Basic features</li>
-      <li>Email support</li>
-      <li>5GB storage</li>
-    </ul>
-    <button class="btn-secondary mt-2">Choose Plan</button>
-  </div>
-  <div class="feature-card">
-    <div class="pill">Popular</div>
-    <h3 class="feature-title">$299/month</h3>
-    <ul class="points-clean">
-      <li>Up to 50 users</li>
-      <li>Advanced features</li>
-      <li>Priority support</li>
-      <li>100GB storage</li>
-      <li>API access</li>
-    </ul>
-    <button class="btn-primary mt-2">Choose Plan</button>
-  </div>
-  <div class="feature-card">
-    <div class="eyebrow">Enterprise</div>
-    <h3 class="feature-title">Custom</h3>
-    <ul class="points-clean">
-      <li>Unlimited users</li>
-      <li>All features</li>
-      <li>Dedicated support</li>
-      <li>Unlimited storage</li>
-      <li>Custom integrations</li>
-    </ul>
-    <button class="btn-secondary mt-2">Contact Sales</button>
-  </div>
-</div>
-
----
-
-# Technology Stack
-
-<div class="feature-grid mt-2">
-  <div class="feature-card">
-    <div class="eyebrow">Frontend</div>
-    <ul class="points-clean">
-      <li>React / Vue.js / Angular</li>
-      <li>TypeScript</li>
-      <li>Tailwind CSS</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <div class="eyebrow">Backend</div>
-    <ul class="points-clean">
-      <li>Node.js / Python / Go</li>
-      <li>GraphQL / REST APIs</li>
-      <li>Microservices</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <div class="eyebrow">Infrastructure</div>
-    <ul class="points-clean">
-      <li>AWS / Azure / GCP</li>
-      <li>Kubernetes</li>
-      <li>CI/CD pipelines</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <div class="eyebrow">Data</div>
-    <ul class="points-clean">
-      <li>PostgreSQL / MongoDB</li>
-      <li>Redis</li>
-      <li>Elasticsearch</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <div class="eyebrow">Security</div>
-    <ul class="points-clean">
-      <li>End-to-end encryption</li>
-      <li>OAuth 2.0 / SAML</li>
-      <li>SOC 2 compliant</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <div class="eyebrow">Monitoring</div>
-    <ul class="points-clean">
-      <li>Prometheus / Grafana</li>
-      <li>ELK Stack</li>
-      <li>APM tools</li>
-    </ul>
-  </div>
-</div>
-
----
-
-# Team
-
-<div class="card-grid four mt-2">
-  <div class="feature-card">
-    <h4 class="feature-title">CEO</h4>
-    <p class="muted small">20+ years experience</p>
-    <p class="muted small">Former Fortune 500 exec</p>
-  </div>
-  <div class="feature-card">
-    <h4 class="feature-title">CTO</h4>
-    <p class="muted small">15+ years in tech</p>
-    <p class="muted small">Ex-FAANG engineer</p>
-  </div>
-  <div class="feature-card">
-    <h4 class="feature-title">CPO</h4>
-    <p class="muted small">Product visionary</p>
-    <p class="muted small">3 successful exits</p>
-  </div>
-  <div class="feature-card">
-    <h4 class="feature-title">CFO</h4>
-    <p class="muted small">Finance expert</p>
-    <p class="muted small">IPO experience</p>
+  <div class="pillar">
+    <div class="icon">🧱</div>
+    <div class="title">Maintainability</div>
+    <div class="text subtle">Can we change it safely?</div>
   </div>
 </div>
 
 <div class="card mt-2">
-  <h3>Advisory Board</h3>
-  <ul class="points-clean">
-    <li>Industry veterans from leading tech companies</li>
-    <li>Domain experts in enterprise software</li>
-    <li>Strategic advisors with deep market connections</li>
-  </ul>
+  <div class="eyebrow">Key idea</div>
+  <div class="big">Quality is “fit for purpose” across multiple dimensions, not just “no bugs.”</div>
 </div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:00 Set the definition.
+- Many teams equate quality with “lack of defects,” but quality is broader: it is whether the product meets user needs safely and reliably.
+
+01:00–02:30 Walk through pillars.
+- Correctness: functional behavior matches requirements.
+- Usability: users can complete tasks without confusion or excessive effort.
+- Reliability: resilience under real conditions (latency, intermittent failures, retries).
+- Security: protecting confidentiality/integrity/availability and minimizing abuse.
+- Performance: speed/latency/throughput are part of user experience.
+- Maintainability: ability to modify and evolve without destabilizing.
+
+02:30–04:00 Trade-offs.
+- Sometimes pillars conflict (e.g., speed vs. security friction). Quality is making explicit trade-offs aligned to user and business risk.
+
+04:00–05:00 Transition.
+- Now, how do QA, QC, and testing fit into achieving these pillars?
+-->
 
 ---
 
-# Customer Testimonials
-
-<div class="card-grid two mt-2">
-  <div class="feature-card glass">
-    <p class="muted">"This platform transformed our operations. We've seen incredible efficiency gains and cost savings."</p>
-    <div class="mt-2">
-      <strong>John Smith</strong><br>
-      <span class="text-xs muted">CTO, Tech Corp</span>
+# QA vs QC vs Testing
+<div class="venn-wrap">
+  <div class="venn">
+    <div class="circle qa">
+      <div class="label">QA</div>
+      <div class="desc">Prevention</div>
+      <div class="subtle small">Process • Standards • Learning</div>
+    </div>
+    <div class="circle qc">
+      <div class="label">QC</div>
+      <div class="desc">Detection</div>
+      <div class="subtle small">Reviews • Audits • Checks</div>
+    </div>
+    <div class="circle test">
+      <div class="label">Testing</div>
+      <div class="desc">Activity</div>
+      <div class="subtle small">Execute • Observe • Compare</div>
+    </div>
+    <div class="overlap">
+      <div class="pill">Shared goal: reduce risk and improve confidence</div>
     </div>
   </div>
-  <div class="feature-card glass">
-    <p class="muted">"The best investment we've made. ROI was evident within the first quarter."</p>
-    <div class="mt-2">
-      <strong>Jane Doe</strong><br>
-      <span class="text-xs muted">CEO, Innovation Inc</span>
-    </div>
-  </div>
-</div>
 
----
-
-# Next Steps
-
-<div class="cta-band">
-  <div>
-    <div class="overline">Get Started Today</div>
-    <h2 class="text-hero">Ready to Transform Your Business?</h2>
-    <p class="muted">Join thousands of companies already using our platform</p>
-    <div class="cta-actions">
-      <button class="btn-primary">Start Free Trial</button>
-      <button class="btn-secondary">Schedule Demo</button>
-    </div>
-  </div>
-  <div>
-    <div class="card">
-      <div class="eyebrow">Contact</div>
-      <ul class="points-clean">
-        <li>Sales: sales@example.com</li>
-        <li>Support: support@example.com</li>
-        <li>Phone: 1-800-EXAMPLE</li>
-      </ul>
-      <div class="muted small mt-4">www.example.com</div>
-    </div>
-  </div>
-</div>
-
----
-
-# Appendix
-
-<div class="card-grid two mt-2">
-  <div class="feature-card">
-    <h3 class="feature-title">Resources</h3>
-    <ul class="points-clean">
-      <li>Technical documentation</li>
-      <li>API reference</li>
-      <li>Video tutorials</li>
-      <li>Community forum</li>
-    </ul>
-  </div>
-  <div class="feature-card">
-    <h3 class="feature-title">Legal</h3>
-    <ul class="points-clean">
-      <li>Terms of service</li>
-      <li>Privacy policy</li>
-      <li>Security compliance</li>
-      <li>SLA agreements</li>
-    </ul>
+  <div class="card mt-2">
+    <div class="eyebrow">One-line mental model</div>
+    <div class="big">QA builds the system that helps us do quality; QC verifies outputs; testing is one way we verify.</div>
   </div>
 </div>
 
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:00 Start with common confusion.
+- People often use QA and testing interchangeably. This creates mismatched expectations.
+
+01:00–02:30 Definitions.
+- Quality Assurance (QA): preventative. It focuses on how we build—process, standards, and feedback loops that reduce defects upstream.
+- Quality Control (QC): detective. It checks outputs: peer review, audits, conformance checks.
+- Testing: an activity (manual or automated) that exercises the system to reveal issues or build confidence.
+
+02:30–04:00 Implication for teams.
+- A “QA team” can do testing, but the value is bigger: enabling quality across the SDLC.
+- Developers do QA activities too: code reviews, design discussions, unit tests, monitoring readiness.
+
+04:00–05:00 Transition.
+- If QA is more than testing, what mindset does it require—especially under pressure?
+-->
+
 ---
-layout: center
-class: text-center
+
+# The QA Mindset
+<div class="center-card">
+  <div class="quote">“If QA is silent, be afraid.”</div>
+  <div class="subtle mt-1">Silence often means issues are unseen, unspoken, or being normalized.</div>
+</div>
+
+<div class="roles-ring mt-2">
+  <div class="ring-center">
+    <div class="ring-title">Quality</div>
+    <div class="ring-sub subtle">User outcomes • Risk • Trust</div>
+  </div>
+
+  <div class="ring-node n1">
+    <div class="pill">Developers</div>
+    <div class="subtle small">Design for testability</div>
+  </div>
+  <div class="ring-node n2">
+    <div class="pill">QA Engineers</div>
+    <div class="subtle small">Expose risk early</div>
+  </div>
+  <div class="ring-node n3">
+    <div class="pill">Scrum Masters</div>
+    <div class="subtle small">Protect healthy flow</div>
+  </div>
+  <div class="ring-node n4">
+    <div class="pill">Leads</div>
+    <div class="subtle small">Make trade-offs explicit</div>
+  </div>
+  <div class="ring-node n5">
+    <div class="pill">Interns</div>
+    <div class="subtle small">Ask “why” and learn</div>
+  </div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:30 Explain the quote.
+- “If QA is silent, be afraid” does not mean QA must be negative; it means risk must be surfaced.
+- Silence can indicate: fear of conflict, lack of time, unclear ownership, or “we’ll fix later” culture.
+
+01:30–03:00 Pressures and trade-offs.
+- Teams face schedule pressure, scope creep, unclear requirements, and dependencies.
+- The QA mindset is the habit of asking: What could go wrong? Who is impacted? How will we know quickly? What is acceptable risk?
+
+03:00–04:30 Shared ownership.
+- Everyone contributes differently:
+  - Developers: testable designs, unit checks, error handling, observability.
+  - QA engineers: risk analysis, exploratory testing, learning loops, validation strategy.
+  - Scrum Masters: ensure quality is part of “how we work,” not a last-minute phase.
+  - Leads: set expectations, define “done,” decide trade-offs openly.
+  - Interns: bring fresh eyes; asking naive questions catches real issues.
+
+04:30–05:00 Transition.
+- Let’s place this mindset into the software lifecycle.
+-->
+
 ---
 
-# Thank You
+# QA in the SDLC
+<div class="sdlc-loop">
+  <div class="phase p1">
+    <div class="phase-title">Requirements</div>
+    <div class="phase-sub subtle">Clarify • Ask “what if”</div>
+  </div>
+  <div class="phase p2">
+    <div class="phase-title">Design</div>
+    <div class="phase-sub subtle">Testability • Risks</div>
+  </div>
+  <div class="phase p3">
+    <div class="phase-title">Build</div>
+    <div class="phase-sub subtle">Checks • Reviews</div>
+  </div>
+  <div class="phase p4">
+    <div class="phase-title">Test</div>
+    <div class="phase-sub subtle">Validate • Explore</div>
+  </div>
+  <div class="phase p5">
+    <div class="phase-title">Release</div>
+    <div class="phase-sub subtle">Readiness • Rollback</div>
+  </div>
+  <div class="phase p6">
+    <div class="phase-title">Operate</div>
+    <div class="phase-sub subtle">Monitor • Learn</div>
+  </div>
 
-Questions?
+  <div class="loop-label card">
+    <div class="eyebrow">QA responsibilities</div>
+    <div class="big">Quality is built-in across phases, with feedback loops back to requirements and design.</div>
+  </div>
+</div>
 
-<div class="mt-4 subtle">Press S for presenter mode • Press E to open editor • Use arrow keys to navigate</div>
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:00 Set the big picture.
+- QA is not “the testing phase.” It is a set of responsibilities distributed across the SDLC.
+
+01:00–03:30 Walk phase by phase with concrete examples.
+- Requirements: define acceptance criteria, identify edge cases, clarify non-functional needs (performance/security).
+- Design: validate design assumptions, identify integration risks, define test strategy, ensure observability needs are included.
+- Build: code reviews, static analysis, unit tests, component tests, feature flags, error handling.
+- Test: functional validation, regression, exploratory, risk-based focus; validate fixes.
+- Release: check readiness, deployment verification, rollback plan, smoke checks.
+- Operate: monitor KPIs/errors, triage, incident learning, prevent recurrence.
+
+03:30–04:30 Emphasize feedback loops.
+- Production incidents should improve requirements and design (not just “patch and move on”).
+
+04:30–05:00 Transition.
+- With that lifecycle view, what are the major types and methods of testing we use to build confidence?
+-->
+
+---
+
+# Testing Types & Methods
+<div class="pyramid-wrap">
+  <div class="pyramid">
+    <div class="layer l1">
+      <div class="layer-title">Unit</div>
+      <div class="layer-sub subtle">Fast • Isolated • Lots</div>
+    </div>
+    <div class="layer l2">
+      <div class="layer-title">Integration</div>
+      <div class="layer-sub subtle">APIs • Components</div>
+    </div>
+    <div class="layer l3">
+      <div class="layer-title">End-to-End</div>
+      <div class="layer-sub subtle">User flows • Fewer</div>
+    </div>
+    <div class="layer l4">
+      <div class="layer-title">Manual / Exploratory</div>
+      <div class="layer-sub subtle">Human insight</div>
+    </div>
+  </div>
+
+  <div class="card mt-2">
+    <div class="chips">
+      <div class="chip">Functional</div>
+      <div class="chip">Non-functional</div>
+      <div class="chip">Manual</div>
+      <div class="chip">Automation</div>
+      <div class="chip">Regression</div>
+      <div class="chip">Exploratory</div>
+      <div class="chip">Risk-based</div>
+    </div>
+    <div class="subtle mt-1">Pick methods based on risk, cost, and feedback speed.</div>
+  </div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:30 Explain the pyramid.
+- The pyramid is a heuristic: prefer many fast checks (unit), fewer expensive checks (E2E).
+- Not all products fit perfectly, but the principle is feedback speed and stability.
+
+01:30–03:30 Clarify categories.
+- Functional: features behave as intended (workflows, rules, calculations).
+- Non-functional: security, performance, reliability, accessibility, usability.
+- Manual vs automation: manual gives discovery; automation gives repeatability.
+- Regression: ensure old behavior remains correct after changes.
+- Exploratory: goal-driven learning and probing, especially for new features or risky areas.
+- Risk-based: focus where failure impact or likelihood is highest.
+
+03:30–04:30 Trade-offs.
+- End-to-end tests provide high confidence but can be flaky and slow; keep them focused on critical journeys.
+- Non-functional testing is often late; the mindset is to consider it early.
+
+04:30–05:00 Transition.
+- Testing is only one part. What are core QA deliverables and how do they flow?
+-->
+
+---
+
+# QA Deliverables (Core Practices)
+<div class="doc-flow">
+  <div class="doc-node">
+    <div class="doc-title">Strategy</div>
+    <div class="doc-sub subtle">Quality goals, risks, approach</div>
+  </div>
+  <div class="doc-arrow">→</div>
+  <div class="doc-node">
+    <div class="doc-title">Test Plan</div>
+    <div class="doc-sub subtle">Scope, environments, schedule</div>
+  </div>
+  <div class="doc-arrow">→</div>
+  <div class="doc-node">
+    <div class="doc-title">Test Cases</div>
+    <div class="doc-sub subtle">Checks + data + expected results</div>
+  </div>
+  <div class="doc-arrow">→</div>
+  <div class="doc-node">
+    <div class="doc-title">Defects</div>
+    <div class="doc-sub subtle">Evidence, severity/priority</div>
+  </div>
+  <div class="doc-arrow">→</div>
+  <div class="doc-node">
+    <div class="doc-title">Report</div>
+    <div class="doc-sub subtle">Status, risks, recommendations</div>
+  </div>
+</div>
+
+<div class="card mt-2">
+  <div class="eyebrow">Practice principle</div>
+  <div class="big">Artifacts exist to enable decisions, not to create paperwork.</div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:00 Start with why deliverables matter.
+- QA deliverables help the team make decisions: what is ready, what is risky, and what to do next.
+
+01:00–03:00 Walk the flow.
+- Strategy: high-level agreement on quality goals and major risks.
+- Test plan: how we will validate; scope, people, schedule, environments.
+- Test cases: documented checks (manual or automated), including data and expected results.
+- Defects: recorded with evidence and context so they can be fixed efficiently.
+- Report: communicate quality status and recommendations to stakeholders.
+
+03:00–04:00 Keep it lightweight and useful.
+- The right amount of documentation depends on complexity and risk.
+- In agile, documentation can be lean: shared checklists, acceptance criteria, concise test charters.
+
+04:00–05:00 Transition.
+- Defects are a key output. Let’s align on a typical bug life cycle and the difference between severity and priority.
+-->
+
+---
+
+# Bug Life Cycle
+<div class="bug-flow">
+  <div class="bug-node">New</div>
+  <div class="bug-arrow">→</div>
+  <div class="bug-node">Triaged</div>
+  <div class="bug-arrow">→</div>
+  <div class="bug-node">Assigned</div>
+  <div class="bug-arrow">→</div>
+  <div class="bug-node">In Progress</div>
+  <div class="bug-arrow">→</div>
+  <div class="bug-node">Fixed</div>
+  <div class="bug-arrow">→</div>
+  <div class="bug-node">Verified</div>
+  <div class="bug-arrow">→</div>
+  <div class="bug-node good">Closed</div>
+</div>
+
+<div class="sevprio mt-2">
+  <div class="card">
+    <div class="eyebrow">Severity</div>
+    <div class="big">How bad is the impact?</div>
+    <div class="subtle">Data loss, crash, security issue, UX blocker…</div>
+  </div>
+  <div class="card">
+    <div class="eyebrow">Priority</div>
+    <div class="big">How soon must we fix it?</div>
+    <div class="subtle">Depends on releases, customers, risk, alternatives…</div>
+  </div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:30 Life cycle walk-through.
+- New: issue reported with steps and evidence.
+- Triaged: confirm reproducibility, categorize, clarify, decide next step.
+- Assigned: ownership set (often dev); clear acceptance for “fixed.”
+- In Progress / Fixed: implementation and evidence.
+- Verified: QA/dev confirms the fix and checks for regression.
+- Closed: done; optionally link to root cause or postmortem if severe.
+
+01:30–03:30 Severity vs priority.
+- Severity is impact; it should be relatively objective.
+- Priority is scheduling; it is a decision balancing urgency, risk, and roadmap.
+- Example: a minor UI glitch in a key executive demo may be high priority but low severity.
+
+03:30–04:30 Quality of bug reports.
+- Good bugs reduce rework: clear steps, expected vs actual, environment, screenshots/logs, minimal reproduction when possible.
+
+04:30–05:00 Transition.
+- Now place QA into the Scrum cycle: where does QA work happen sprint-to-sprint?
+-->
+
+---
+
+# QA in Scrum
+<div class="scrum-cycle">
+  <div class="scrum-node">
+    <div class="title">Backlog Refinement</div>
+    <div class="subtle">Acceptance criteria • Risks</div>
+  </div>
+  <div class="scrum-arrow">→</div>
+  <div class="scrum-node">
+    <div class="title">Sprint Planning</div>
+    <div class="subtle">Test approach • Capacity</div>
+  </div>
+  <div class="scrum-arrow">→</div>
+  <div class="scrum-node">
+    <div class="title">Daily</div>
+    <div class="subtle">Unblock • Surface risk</div>
+  </div>
+  <div class="scrum-arrow">→</div>
+  <div class="scrum-node">
+    <div class="title">Build + Test</div>
+    <div class="subtle">Pairing • Automation • Exploratory</div>
+  </div>
+  <div class="scrum-arrow">→</div>
+  <div class="scrum-node">
+    <div class="title">Review</div>
+    <div class="subtle">Demo readiness</div>
+  </div>
+  <div class="scrum-arrow">→</div>
+  <div class="scrum-node">
+    <div class="title">Retro</div>
+    <div class="subtle">Improve system</div>
+  </div>
+</div>
+
+<div class="card mt-2">
+  <div class="eyebrow">Definition of Done</div>
+  <div class="big">Quality becomes real when “done” includes validation and learning, not just “merged.”</div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:00 Scrum is a feedback engine.
+- Scrum aims to deliver increments frequently, which makes quality practices essential.
+
+01:00–03:00 Where QA fits.
+- Refinement: clarify acceptance criteria, identify edge cases, define non-functional needs.
+- Planning: align on test approach, environments, and readiness signals.
+- Daily: raise risks early; avoid “test crunch” at end of sprint.
+- During sprint: pair with devs, validate stories as they’re built, build automation where valuable, run exploratory sessions for new features.
+- Review: ensure demo is representative and stable; capture quality risks transparently.
+- Retro: identify process improvements that prevent recurring issues.
+
+03:00–04:30 Anti-patterns to call out gently.
+- “QA after dev is done” creates queues and late discoveries.
+- “We’ll fix next sprint” can become a quality debt spiral.
+
+04:30–05:00 Transition.
+- AI products introduce new kinds of uncertainty. Let’s discuss what changes when systems are non-deterministic.
+-->
+
+---
+
+# QA in AI Systems
+<div class="ai-diagram">
+  <div class="ai-box">
+    <div class="ai-title">Data</div>
+    <div class="ai-sub subtle">Training • Inputs • Labels</div>
+  </div>
+  <div class="ai-arrow">→</div>
+  <div class="ai-box">
+    <div class="ai-title">Model</div>
+    <div class="ai-sub subtle">Behavior may vary</div>
+  </div>
+  <div class="ai-arrow">→</div>
+  <div class="ai-box">
+    <div class="ai-title">Product</div>
+    <div class="ai-sub subtle">UX • Policies • Controls</div>
+  </div>
+  <div class="ai-arrow">→</div>
+  <div class="ai-box">
+    <div class="ai-title">Monitoring</div>
+    <div class="ai-sub subtle">Quality in the wild</div>
+  </div>
+
+  <div class="risk-badges mt-2">
+    <div class="badge danger">Non-determinism</div>
+    <div class="badge warn">Data quality</div>
+    <div class="badge warn">Bias / fairness</div>
+    <div class="badge warn">Model drift</div>
+    <div class="badge info">Observability</div>
+  </div>
+</div>
+
+<div class="card mt-2">
+  <div class="eyebrow">Mindset shift</div>
+  <div class="big">You validate behavior ranges and outcomes, not just exact answers.</div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:30 What changes with AI.
+- Traditional systems are often deterministic: same input → same output.
+- AI systems can be probabilistic and sensitive to data and context, which changes how we test and monitor.
+
+01:30–03:30 New risk areas.
+- Non-determinism: output variability; testing should consider acceptable ranges and consistency expectations.
+- Data quality: “garbage in, garbage out.” Data pipelines become part of the product.
+- Bias/fairness: some failures harm specific groups disproportionately; test for representative scenarios.
+- Model drift: performance changes over time as inputs and environment shift.
+- Monitoring: quality is continuous—measure accuracy proxies, user feedback, and safety signals post-release.
+
+03:30–04:30 Practical implication for foundational QA.
+- Define what “good” looks like: guardrails, evaluation criteria, and monitoring thresholds.
+- Focus on user harm reduction and transparency about limitations.
+
+04:30–05:00 Transition.
+- Whether AI or not, quality improves when culture supports it. Let’s talk about building a quality culture loop.
+-->
+
+---
+
+# Building Quality Culture
+<div class="culture-loop">
+  <div class="cl-node">Collaborate</div>
+  <div class="cl-arrow">→</div>
+  <div class="cl-node">Build</div>
+  <div class="cl-arrow">→</div>
+  <div class="cl-node">Test</div>
+  <div class="cl-arrow">→</div>
+  <div class="cl-node">Learn</div>
+  <div class="cl-arrow">→</div>
+  <div class="cl-node">Improve</div>
+</div>
+
+<div class="card mt-2">
+  <div class="eyebrow">Signals of a healthy culture</div>
+  <div class="culture-signals">
+    <div class="signal">People surface risk early without blame.</div>
+    <div class="signal">“Done” includes validation.</div>
+    <div class="signal">Incidents lead to systemic fixes.</div>
+    <div class="signal">Quality metrics are visible and acted on.</div>
+  </div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:00 Culture is the multiplier.
+- Processes and tools matter, but culture determines whether they work under pressure.
+
+01:00–03:00 Walk the loop.
+- Collaborate: shared understanding, clear criteria, pairing across roles.
+- Build: engineering practices that reduce risk (reviews, feature flags, observability).
+- Test: a mix of automated checks and human exploration.
+- Learn: treat failures as information; capture what happened and why.
+- Improve: invest in preventing recurrence (root cause, better monitoring, better requirements).
+
+03:00–04:30 Concrete behaviors to encourage.
+- Shift-left: QA involvement at refinement and design.
+- Shared responsibility: devs help test; QA helps with risk framing; Scrum Masters protect time for quality.
+- Psychological safety: people report issues early.
+
+04:30–05:00 Transition.
+- Let’s close with the key takeaways for the team.
+-->
+
+---
+
+# Key Messages
+<div class="takeaways">
+  <div class="takeaway">
+    <div class="take-icon">🧠</div>
+    <div class="take-title">QA is a mindset</div>
+    <div class="take-text subtle">Think in risks, outcomes, and feedback loops.</div>
+  </div>
+  <div class="takeaway">
+    <div class="take-icon">👥</div>
+    <div class="take-title">Everyone owns quality</div>
+    <div class="take-text subtle">Roles differ, but ownership is shared.</div>
+  </div>
+  <div class="takeaway">
+    <div class="take-icon">🛠️</div>
+    <div class="take-title">QA makes quality real</div>
+    <div class="take-text subtle">Through strategy, validation, and learning.</div>
+  </div>
+</div>
+
+<div class="center-card mt-2">
+  <div class="big">Next step: pick one quality improvement you can start this sprint.</div>
+  <div class="subtle mt-1">Example: tighter acceptance criteria, better bug reports, a key regression check, or a monitoring alert.</div>
+</div>
+
+<!--
+Speaker notes (timing: ~4–5 min)
+00:00–01:00 Summarize in plain language.
+- Quality is not just a QA responsibility; it is a team outcome.
+- A quality mindset is about prevention, risk awareness, and fast learning.
+
+01:00–03:00 Reinforce the three messages.
+- QA is a mindset: ask what could go wrong, and make trade-offs explicit.
+- Everyone owns quality: devs, QA, product, scrum—each contributes.
+- QA makes quality real: by translating risk into action (tests, checks, criteria, monitoring).
+
+03:00–04:30 Call to action (keep it practical).
+- Invite the team to choose one change:
+  - Add acceptance criteria that cover edge cases.
+  - Add a high-value regression test.
+  - Improve a brittle area through refactoring or better logs.
+  - Add an alert for a user-impacting failure mode.
+  - Hold a 30-minute exploratory session on the riskiest feature.
+
+04:30–05:00 Close.
+- Thank the group and open for questions.
+- If time: ask for one “quality pain” people feel today and note it for follow-up.
+-->
