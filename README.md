@@ -1,0 +1,1 @@
+# quality-assurance-fundamentals-presentation-195336-195345
